@@ -1,6 +1,7 @@
 #ifndef MAINWINDOWCONTROLLER_HPP
 #define MAINWINDOWCONTROLLER_HPP
 
+#include "aluno/aboutdialog.hpp"
 #include "mainwindow.hpp"
 
 #include <QGraphicsScene>
@@ -16,10 +17,6 @@ class MainWindowController final : public QObject
 public:
     explicit MainWindowController(MainWindow &mainWindow, QObject *parent = nullptr);
 
-    std::vector<QPointF> getAllPoints() const;
-
-    void highlightPoint(QPointF const &point);
-
     static const QPen   pointNoContour;
     static const QPen   pointContour;
     static const QBrush pointNoFill;
@@ -27,11 +24,14 @@ public:
     static const qreal  pointWidth;
 
 private:
+    std::vector<QPointF> getAllPoints() const;
+
+    void highlightPoint(QPointF const &point);
+
     MainWindow &mainWindow;
+    AboutDialog *dialogAbout;
 
     QGraphicsScene scene;
-
-signals:
 
 public slots:
 };

@@ -13,6 +13,11 @@ public:
 
 private:
     void mousePressEvent(QMouseEvent *event) override;
+
+    bool inserting{false};
+
+public slots:
+    void insertionMode(bool insert);
 };
 
 #endif // QXDGRAPHICSVIEW_HPP
