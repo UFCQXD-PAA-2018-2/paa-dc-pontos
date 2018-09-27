@@ -25,10 +25,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    mainwindowcontroller.cpp \
+    qxdgraphicsview.cpp
 
 HEADERS += \
-        mainwindow.hpp
+        mainwindow.hpp \
+    mainwindowcontroller.hpp \
+    qxdgraphicsview.hpp
 
 FORMS += \
         mainwindow.ui
