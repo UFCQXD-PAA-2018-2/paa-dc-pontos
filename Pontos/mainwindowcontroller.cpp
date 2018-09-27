@@ -21,7 +21,6 @@ MainWindowController::MainWindowController(MainWindow &mainWindow, QObject *pare
     ui->graphicsView->setScene(&scene);
     ui->graphicsView->setRenderHint(QPainter::Antialiasing, true);
 
-    connect(ui->actionNew, &QAction::triggered, &scene, &QGraphicsScene::clear);
     connect(ui->actionAdd, &QAction::toggled,
             ui->graphicsView, &QxdGraphicsView::insertionMode);
 
@@ -32,8 +31,15 @@ MainWindowController::MainWindowController(MainWindow &mainWindow, QObject *pare
                 SLOT(exec())
                 );
 
+    connect(ui->actionNew, &QAction::triggered, this, [this, ui]{
+        scene.clear();
+
+        ui->actionAdd->setEnabled(true);
+    });
+
     connect(ui->actionSolve, &QAction::triggered, this, [this, ui]{
         ui->actionAdd->setChecked(false);
+        ui->actionAdd->setEnabled(false);
 
         std::vector<QPointF> allPoints = getAllPoints();
 
